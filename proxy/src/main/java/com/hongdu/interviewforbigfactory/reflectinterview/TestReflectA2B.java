@@ -3,7 +3,17 @@ package com.hongdu.interviewforbigfactory.reflectinterview;
 import java.lang.reflect.Field;
 
 /**
- * 反射修改对象值
+ * 反射修改对象值 ：
+ *  利用反射创建数组对象： https://www.cnblogs.com/xiaotiaosi/p/6400740.html
+ *  https://www.cnblogs.com/xiaotiaosi/p/6400740.html
+ *  利用反射精确判断类类型：
+ *  //用反射精确判断类型
+ * 24         System.out.println("反射判断的结果：");
+ * 25         if(mc.getClass()==Class.forName("Reflect.MyFather")){
+ * 26             System.out.println("对象是MyFather类型的！！");
+ * 27         }else{
+ * 28             System.out.println("对象不是MyFather类型的！");
+ * 29         }
  */
 public class TestReflectA2B {
     public static void main(String[] args) throws Exception{
