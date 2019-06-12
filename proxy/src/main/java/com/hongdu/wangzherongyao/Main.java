@@ -1,4 +1,4 @@
-package com.hongdu.gupao.proxy.wangzherongyao;
+package com.hongdu.wangzherongyao;
 
 /**
  * https://blog.csdn.net/iannaj/article/details/80872748
