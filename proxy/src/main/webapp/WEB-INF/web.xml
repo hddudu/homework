@@ -9,7 +9,7 @@
 
 	<servlet>
 		<servlet-name>delegateServlet</servlet-name>
-		<servlet-class>com.gupaoedu.vip.pattern.delegate.mvc.DispatcherServlet</servlet-class>
+		<servlet-class>com.hongdu.gupao.commission.mvcdispatcher.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

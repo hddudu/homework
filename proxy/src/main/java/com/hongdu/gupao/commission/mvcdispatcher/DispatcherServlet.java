@@ -26,12 +26,13 @@ public class DispatcherServlet extends HttpServlet {
     private void doDispatcher(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String uri = req.getRequestURI();
         System.out.println("uri : " + uri);
-        String mid = req.getParameter("mid");
-        if("getMemberById".equals(uri)) {
+        //访问http://localhost:8282/proxy7/getMemberById
+        String mid = req.getParameter("mid");//uri : /proxy7/getMemberById
+        if("getMemberById".equals(mid)) {
             new MemberController().getMemberById(mid);
-        } else if("getOrderById".equals(uri)) {
+        } else if("getOrderById".equals(mid)) {
             new OrderController().getOrderById(mid);
-        } else if("logout".equals(uri)) {
+        } else if("logout".equals(mid)) {
             new SystemController().logout();
         } else {
             //PrintWriter 打印流
