@@ -10,4 +10,11 @@ target存放的是单个Module的编译结果。
 G:\my_maven_workspace_git\javaSpaceForGupao\homework\proxy\target
 类似配成这样
 
-2:
+2:记一次
+sout 快速输出
+
+3: ctrl + shift + 上下 移动代码
+alt + insert getter/setter方法
+alt + enter 导入 + 添加异常块(选中红色线块)
+ctrl + i 实现方法
+ctrl + shift + U 大小写转换
