@@ -23,27 +23,27 @@ public class DataMain {
         float cityTempB = 10.45f;
         File dir = new File("G:/Test");
         dir.mkdirs();
-
-        //
         // Create FileOutputStream write to file.
-        //
         FileOutputStream fos = new FileOutputStream("G:/Test/cities.txt");
         // Create DataOutputStream object wrap 'fos'.
         // The data write to 'dos' will be pushed to 'fos'.
         DataOutputStream dos = new DataOutputStream(fos);
+        DataInputStream dis = new DataInputStream(new FileInputStream("G:/Test/cities.txt"));
+//        System.out.println(dis.readUTF());//一般不用，一般会出现EOFException
+        System.out.println(dis.readUnsignedShort());
         //
         // Write data.
         //原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：https://www.yiibai.com/java/java-io-tutorial-binary-streams.html
 
-        dos.writeInt(cityIdA);
-        dos.writeUTF(cityNameA);
-        dos.writeInt(cityPopulationA);
-        dos.writeFloat(cityTempA);
-
-        dos.writeInt(cityIdB);
-        dos.writeUTF(cityNameB);
-        dos.writeInt(cityPopulationB);
-        dos.writeFloat(cityTempB);
+//        dos.writeInt(cityIdA);
+//        dos.writeUTF(cityNameA);
+//        dos.writeInt(cityPopulationA);
+//        dos.writeFloat(cityTempA);
+//
+//        dos.writeInt(cityIdB);
+//        dos.writeUTF(cityNameB);
+//        dos.writeInt(cityPopulationB);
+//        dos.writeFloat(cityTempB);
 //
         dos.flush();
         dos.close();
