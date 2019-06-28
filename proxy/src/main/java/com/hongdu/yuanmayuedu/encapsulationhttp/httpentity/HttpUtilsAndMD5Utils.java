@@ -11,10 +11,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.nio.charset.Charset;
 import java.util.Map;
 import java.util.Set;
@@ -248,6 +245,79 @@ public class HttpUtilsAndMD5Utils {
 
     //xml转成字节数组
     //提交数据到服务器
+
+    /**
+     * 设置Get请求Request头
+     * @param url
+     * @param params
+     * @param headers
+     * @return
+     */
+    public static URLConnection setGetRequest(String url,
+                                               Map<String, String> params, Map<String, String> headers) throws IOException {
+
+//        StringBuilder
+                StringBuffer buffer = new StringBuffer(url);
+                Set<Map.Entry<String, String>> entries = null;
+        // 如果是GET请求，则请求参数在URL中
+        if(params != null && !params.isEmpty()) {
+            buffer.append("?");
+            entries = params.entrySet();
+            for (Map.Entry<String, String> entry : entries) {
+                buffer.append(entry.getKey()).append("=") //.append(entry.getValue())
+                    .append(URLEncoder.encode(entry.getValue(), "UTF-8"))
+                        .append("&");
+            }
+            buffer.deleteCharAt(buffer.length() - 1);
+
+        }
+        URL url1 = new URL(buffer.toString());
+        HttpURLConnection connection = (HttpURLConnection) url1.openConnection();
+        connection.setRequestMethod("GET");
+        //设置请求头
+        if(headers != null && !headers.isEmpty()) {
+            entries = headers.entrySet();
+            for (Map.Entry<String,String> entry : entries) {
+                connection.setRequestProperty(entry.getKey(), entry.getValue());
+            }
+        }
+        //为什么会有这个ResponseCode
+        connection.getResponseCode();
+        return connection;
+    }
+
+    public static URLConnection setPosetRequest(String url,
+                                                Map<String, String> params, Map<String, String> headers)
+            throws Exception {
+        StringBuilder buf = new StringBuilder();
+        Set<Map.Entry<String, String>> entrys = null;
+        // 如果存在参数，则放在HTTP请求体，形如name=aaa&age=10
+        if (params != null && !params.isEmpty()) {
+            entrys = params.entrySet();
+            for (Map.Entry<String, String> entry : entrys) {
+                buf.append(entry.getKey()).append("=")
+                        .append(URLEncoder.encode(entry.getValue(), "UTF-8"))
+                        .append("&");
+            }
+            buf.deleteCharAt(buf.length() - 1);
+        }
+        URL url1 = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) url1.openConnection();
+        conn.setRequestMethod("POST");
+        //设置DoOutput(true)
+        conn.setDoOutput(true);
+        //设置输出流信息
+        OutputStream out = conn.getOutputStream();
+        out.write(buf.toString().getBytes("UTF-8"));
+        if (headers != null && !headers.isEmpty()) {
+            entrys = headers.entrySet();
+            for (Map.Entry<String, String> entry : entrys) {
+                conn.setRequestProperty(entry.getKey(), entry.getValue());
+            }
+        }
+        conn.getResponseCode(); // 为了发送成功
+        return conn;
+    }
 
     public static void main(String[] args) {
 
