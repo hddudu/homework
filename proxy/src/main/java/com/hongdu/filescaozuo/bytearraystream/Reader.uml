@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.io.Reader</OriginalElement>
+  <nodes>
+    <node x="1379.0" y="247.0">java.io.DataInputStream</node>
+    <node x="1826.0" y="346.0">java.io.ObjectInputStream.ValidationList</node>
+    <node x="721.0711583924349" y="247.0">java.io.ByteArrayOutputStream</node>
+    <node x="1844.0" y="425.0">java.io.ObjectInputStream.ValidationList.Callback</node>
+    <node x="2078.0" y="247.0">java.io.ObjectInputStream</node>
+    <node x="443.2499999999999" y="346.0">java.io.ObjectOutputStream.DebugTraceInfoStack</node>
+    <node x="1976.0" y="346.0">java.io.ObjectInputStream.HandleTable</node>
+    <node x="1349.8333333333333" y="0.0">java.lang.AutoCloseable</node>
+    <node x="0.0" y="346.0">java.io.ObjectOutputStream.ReplaceTable</node>
+    <node x="559.0711583924349" y="247.0">java.io.DataOutputStream</node>
+    <node x="253.0" y="346.0">java.io.ObjectOutputStream.HandleTable</node>
+    <node x="1828.0711583924349" y="247.0">java.io.ByteArrayInputStream</node>
+    <node x="2364.0" y="79.0">java.lang.Readable</node>
+    <node x="1205.0" y="247.0">java.io.OutputStreamWriter</node>
+    <node x="223.07115839243488" y="247.0">java.io.ObjectOutputStream</node>
+    <node x="783.4999999999999" y="346.0">java.io.ObjectOutputStream.BlockDataOutputStream</node>
+    <node x="2216.0" y="346.0">java.io.ObjectInputStream.FilterValues</node>
+    <node x="1979.0" y="425.0">java.io.ObjectInputStream.HandleTable.HandleList</node>
+    <node x="138.0" y="346.0">java.io.ObjectOutputStream.PutField</node>
+    <node x="2108.0" y="346.0">java.io.ObjectInputStream.Logging</node>
+    <node x="579.9999999999999" y="158.0">java.io.OutputStream</node>
+    <node x="1073.0" y="247.0">java.io.PrintWriter</node>
+    <node x="922.9999999999999" y="247.0">java.io.BufferedWriter</node>
+    <node x="623.2499999999999" y="346.0">java.io.ObjectOutputStream.Caches</node>
+    <node x="397.0711583924349" y="247.0">java.io.FileOutputStream</node>
+    <node x="2349.5" y="158.0">java.io.Reader</node>
+    <node x="1546.75" y="247.0">java.io.FileInputStream</node>
+    <node x="2396.0" y="247.0">java.io.InputStreamReader</node>
+    <node x="2469.0" y="346.0">java.io.ObjectInputStream.Caches</node>
+    <node x="1670.0" y="346.0">java.io.ObjectInputStream.PeekInputStream</node>
+    <node x="1484.0" y="346.0">java.io.ObjectInputStream.BlockDataInputStream</node>
+    <node x="1361.8333333333333" y="79.0">java.io.Closeable</node>
+    <node x="2370.75" y="425.0">java.io.ObjectInputStream.GetFieldImpl</node>
+    <node x="1088.0" y="158.0">java.io.Writer</node>
+    <node x="154.75" y="425.0">java.io.ObjectOutputStream.PutFieldImpl</node>
+    <node x="2246.0" y="247.0">java.io.BufferedReader</node>
+    <node x="1598.0" y="158.0">java.io.InputStream</node>
+    <node x="2354.0" y="346.0">java.io.ObjectInputStream.GetField</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.io.ObjectInputStream.HandleTable.HandleList" target="java.io.ObjectInputStream.HandleTable">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream" target="java.io.InputStream">
+      <point x="-37.0" y="-14.5" />
+      <point x="2115.0" y="207.0" />
+      <point x="1700.6666666666665" y="207.0" />
+      <point x="46.66666666666663" y="14.5" />
+    </edge>
+    <edge source="java.io.FileOutputStream" target="java.io.OutputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="468.0711583924349" y="227.0" />
+      <point x="615.4" y="227.0" />
+      <point x="-23.59999999999991" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.PeekInputStream" target="java.io.ObjectInputStream">
+      <point x="34.0" y="-14.5" />
+      <point x="1772.0" y="306.0" />
+      <point x="2102.6666666666665" y="306.0" />
+      <point x="-49.333333333333314" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.Logging" target="java.io.ObjectInputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream" target="java.lang.AutoCloseable">
+      <point x="37.0" y="-14.5" />
+      <point x="2189.0" y="54.0" />
+      <point x="1453.1666666666665" y="54.0" />
+      <point x="41.33333333333326" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.GetFieldImpl" target="java.io.ObjectInputStream.GetField">
+      <point x="-29.5" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream" target="java.io.OutputStream">
+      <point x="38.5" y="-14.5" />
+      <point x="338.5711583924349" y="217.0" />
+      <point x="591.7999999999998" y="217.0" />
+      <point x="-47.200000000000045" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.GetFieldImpl" target="java.io.ObjectInputStream">
+      <point x="29.500000000000114" y="-14.5" />
+      <point x="2458.5" y="306.0" />
+      <point x="2201.333333333333" y="306.0" />
+      <point x="49.33333333333337" y="14.5" />
+    </edge>
+    <edge source="java.io.PrintWriter" target="java.io.Writer">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.OutputStream" target="java.io.Closeable">
+      <point x="0.0" y="-14.5" />
+      <point x="638.9999999999999" y="128.0" />
+      <point x="1374.3333333333333" y="128.0" />
+      <point x="-37.5" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.PutField" target="java.io.ObjectOutputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="185.0" y="316.0" />
+      <point x="256.0711583924349" y="316.0" />
+      <point x="-44.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.HandleTable" target="java.io.ObjectOutputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="309.0" y="326.0" />
+      <point x="300.0711583924349" y="326.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.FilterValues" target="java.io.ObjectInputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="2275.0" y="326.0" />
+      <point x="2168.4444444444443" y="326.0" />
+      <point x="16.444444444444457" y="14.5" />
+    </edge>
+    <edge source="java.io.FileInputStream" target="java.io.InputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="1614.75" y="227.0" />
+      <point x="1644.6666666666665" y="227.0" />
+      <point x="-9.333333333333371" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.PeekInputStream" target="java.io.InputStream">
+      <point x="-34.0" y="-14.5" />
+      <point x="1704.0" y="227.0" />
+      <point x="1663.3333333333333" y="227.0" />
+      <point x="9.333333333333371" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.PutFieldImpl" target="java.io.ObjectOutputStream">
+      <point x="29.5" y="-14.5" />
+      <point x="242.5" y="326.0" />
+      <point x="278.0711583924349" y="326.0" />
+      <point x="-22.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.PutFieldImpl" target="java.io.ObjectOutputStream.PutField">
+      <point x="-29.5" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.DataOutputStream" target="java.io.OutputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="630.0711583924349" y="227.0" />
+      <point x="638.9999999999999" y="227.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.DataInputStream" target="java.io.InputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="1447.0" y="207.0" />
+      <point x="1607.3333333333333" y="207.0" />
+      <point x="-46.66666666666663" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.ValidationList.Callback" target="java.io.ObjectInputStream.ValidationList">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.ReplaceTable" target="java.io.ObjectOutputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="59.0" y="306.0" />
+      <point x="234.07115839243488" y="306.0" />
+      <point x="-66.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.DebugTraceInfoStack" target="java.io.ObjectOutputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="523.2499999999999" y="326.0" />
+      <point x="322.0711583924349" y="326.0" />
+      <point x="22.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream" target="java.lang.AutoCloseable">
+      <point x="-38.5" y="-14.5" />
+      <point x="261.5711583924349" y="54.0" />
+      <point x="1370.5" y="54.0" />
+      <point x="-41.33333333333326" y="14.5" />
+    </edge>
+    <edge source="java.io.BufferedWriter" target="java.io.Writer">
+      <point x="0.0" y="-14.5" />
+      <point x="987.9999999999999" y="227.0" />
+      <point x="1101.6666666666665" y="227.0" />
+      <point x="-27.333333333333258" y="14.5" />
+    </edge>
+    <edge source="java.io.Reader" target="java.io.Closeable">
+      <point x="-20.5" y="-14.5" />
+      <point x="2370.0" y="128.0" />
+      <point x="1449.3333333333333" y="128.0" />
+      <point x="37.5" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.BlockDataInputStream" target="java.io.ObjectInputStream">
+      <point x="41.5" y="-14.5" />
+      <point x="1608.5" y="296.0" />
+      <point x="2086.222222222222" y="296.0" />
+      <point x="-65.77777777777777" y="14.5" />
+    </edge>
+    <edge source="java.io.Reader" target="java.lang.Readable">
+      <point x="20.5" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.InputStream" target="java.io.Closeable">
+      <point x="0.0" y="-14.5" />
+      <point x="1654.0" y="138.0" />
+      <point x="1424.3333333333333" y="138.0" />
+      <point x="12.5" y="14.5" />
+    </edge>
+    <edge source="java.io.OutputStreamWriter" target="java.io.Writer">
+      <point x="0.0" y="-14.5" />
+      <point x="1282.0" y="227.0" />
+      <point x="1156.333333333333" y="227.0" />
+      <point x="27.333333333333258" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.Caches" target="java.io.ObjectInputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="2510.0" y="296.0" />
+      <point x="2217.7777777777774" y="296.0" />
+      <point x="65.77777777777777" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.BlockDataOutputStream" target="java.io.ObjectOutputStream">
+      <point x="-43.0" y="-14.5" />
+      <point x="826.4999999999999" y="306.0" />
+      <point x="366.0711583924349" y="306.0" />
+      <point x="66.0" y="14.5" />
+    </edge>
+    <edge source="java.io.Writer" target="java.io.Closeable">
+      <point x="0.0" y="-14.5" />
+      <point x="1129.0" y="138.0" />
+      <point x="1399.3333333333333" y="138.0" />
+      <point x="-12.5" y="14.5" />
+    </edge>
+    <edge source="java.io.ByteArrayInputStream" target="java.io.InputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="1911.0711583924349" y="217.0" />
+      <point x="1682.0" y="217.0" />
+      <point x="28.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.ValidationList" target="java.io.ObjectInputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="1891.0" y="316.0" />
+      <point x="2119.111111111111" y="316.0" />
+      <point x="-32.888888888888914" y="14.5" />
+    </edge>
+    <edge source="java.io.ByteArrayOutputStream" target="java.io.OutputStream">
+      <point x="2.2737367544323206E-13" y="-14.5" />
+      <point x="807.0711583924351" y="227.0" />
+      <point x="662.5999999999998" y="227.0" />
+      <point x="23.59999999999991" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.Caches" target="java.io.ObjectOutputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="664.2499999999999" y="316.0" />
+      <point x="344.0711583924349" y="316.0" />
+      <point x="44.0" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.HandleTable" target="java.io.ObjectInputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="2032.0" y="326.0" />
+      <point x="2135.5555555555557" y="326.0" />
+      <point x="-16.444444444444457" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectOutputStream.BlockDataOutputStream" target="java.io.OutputStream">
+      <point x="43.0" y="-14.5" />
+      <point x="912.4999999999999" y="217.0" />
+      <point x="686.1999999999999" y="217.0" />
+      <point x="47.200000000000045" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.BlockDataInputStream" target="java.io.InputStream">
+      <point x="-41.5" y="-14.5" />
+      <point x="1525.5" y="217.0" />
+      <point x="1626.0" y="217.0" />
+      <point x="-28.0" y="14.5" />
+    </edge>
+    <edge source="java.io.Closeable" target="java.lang.AutoCloseable">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.InputStreamReader" target="java.io.Reader">
+      <point x="0.0" y="-14.5" />
+      <point x="2470.0" y="227.0" />
+      <point x="2411.0" y="227.0" />
+      <point x="20.5" y="14.5" />
+    </edge>
+    <edge source="java.io.BufferedReader" target="java.io.Reader">
+      <point x="0.0" y="-14.5" />
+      <point x="2311.0" y="227.0" />
+      <point x="2370.0" y="227.0" />
+      <point x="-20.5" y="14.5" />
+    </edge>
+    <edge source="java.io.ObjectInputStream.GetField" target="java.io.ObjectInputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="2401.0" y="316.0" />
+      <point x="2184.8888888888887" y="316.0" />
+      <point x="32.888888888888914" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.1" x="519.5" y="240.5" />
+  <SelectedNodes>
+    <node>java.io.DataOutputStream</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

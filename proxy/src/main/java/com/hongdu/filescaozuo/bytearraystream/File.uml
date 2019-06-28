@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.io.File</OriginalElement>
+  <nodes>
+    <node x="0.0" y="158.0">sun.awt.shell.Win32ShellFolder2</node>
+    <node x="0.0" y="311.0">java.util.zip.ZipInputStream</node>
+    <node x="0.0" y="385.0">java.io.FileOutputStream</node>
+    <node x="34.5" y="0.0">java.lang.Comparable</node>
+    <node x="168.0" y="158.0">javax.swing.filechooser.FileSystemView.FileSystemRoot</node>
+    <node x="150.0" y="311.0">java.io.FileInputStream</node>
+    <node x="118.5" y="79.0">java.io.File</node>
+    <node x="160.5" y="0.0">java.io.Serializable</node>
+    <node x="85.5" y="232.0">java.io.InputStream</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.zip.ZipInputStream" target="java.io.InputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="65.0" y="286.0" />
+      <point x="113.5" y="286.0" />
+      <point x="-28.0" y="14.5" />
+    </edge>
+    <edge source="javax.swing.filechooser.FileSystemView.FileSystemRoot" target="java.io.File">
+      <point x="0.0" y="-14.5" />
+      <point x="233.0" y="133.0" />
+      <point x="171.0" y="133.0" />
+      <point x="17.5" y="14.5" />
+    </edge>
+    <edge source="java.io.File" target="java.io.Serializable">
+      <point x="17.5" y="-14.5" />
+      <point x="171.0" y="54.0" />
+      <point x="219.5" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.io.FileInputStream" target="java.io.InputStream">
+      <point x="0.0" y="-14.5" />
+      <point x="218.0" y="286.0" />
+      <point x="169.5" y="286.0" />
+      <point x="28.0" y="14.5" />
+    </edge>
+    <edge source="java.io.File" target="java.lang.Comparable">
+      <point x="-17.5" y="-14.5" />
+      <point x="136.0" y="54.0" />
+      <point x="87.5" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="sun.awt.shell.Win32ShellFolder2" target="java.io.File">
+      <point x="0.0" y="-14.5" />
+      <point x="74.0" y="133.0" />
+      <point x="136.0" y="133.0" />
+      <point x="-17.5" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="518.5" y="38.5" />
+  <SelectedNodes>
+    <node>java.io.FileOutputStream</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

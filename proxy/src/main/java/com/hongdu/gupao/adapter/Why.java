@@ -1,7 +1,7 @@
 package com.hongdu.gupao.adapter;
 
 /**
- * @ClassName Why
+ * @ClassName IntroductionHttp
  * @Description 适配器模式：
  *  软件设计阶段并不考虑这个模式，
  *  在软件维护阶段考虑适配器模式；

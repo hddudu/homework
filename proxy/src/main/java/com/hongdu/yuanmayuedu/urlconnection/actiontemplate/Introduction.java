@@ -3,7 +3,7 @@ package com.hongdu.yuanmayuedu.urlconnection.actiontemplate;
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
- * @ClassName Introduction
+ * @ClassName IntroductionHttp
  * @Description UrlConnection 操作模板
  *
  * @Author dudu

@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * @ClassName Introduction
+ * @ClassName IntroductionHttp
  * @Description UrlConnection Test
  * @Author dudu
  * @Date 2019/6/21 10:09

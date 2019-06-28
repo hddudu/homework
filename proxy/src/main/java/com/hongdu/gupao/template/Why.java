@@ -1,7 +1,7 @@
 package com.hongdu.gupao.template;
 
 /**
- * @ClassName Why
+ * @ClassName IntroductionHttp
  * @Description 模板模式的一点思考：
  *      其实是对固定流程化的东西的一个简化，把流程中不变的部分抽象到一个抽象类中，
  *      对可能变化的部分使用钩子方法微调流程的不同点

@@ -1,5 +1,7 @@
 package com.hongdu.filescaozuo;
 
+import java.io.File;
+
 /**
  * @ClassName BaseFileRW
  * @Description 文件基本读写
@@ -12,5 +14,6 @@ package com.hongdu.filescaozuo;
  * @Version 1.0
  */
 public class BaseFileRW {
+
 
 }
