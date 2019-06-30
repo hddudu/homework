@@ -11,6 +11,8 @@
   <modules>
     <module>proxy</module>
     <module>taskscheduledfordu</module>
+      <module>differenceForEverything</module>
+    <module>mybatisForExplainDeeping</module>
   </modules>
 
   <name>homework</name>
