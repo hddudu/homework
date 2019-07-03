@@ -20,7 +20,19 @@ public class CreatFile {
 
     @Test
     public void testCreateFile1() {
-
+        String strTmp = new String("BBBBBBBYYYYYYY");
+        strTmp = strTmp.replaceAll ("\\D", "Y");
+        System.out.println(strTmp);
+        strTmp = strTmp.replaceAll ("Y", "N");
+        System.out.println(strTmp);
+        strTmp = strTmp.replace("N", "C");
+        System.out.println(strTmp);
+        strTmp = strTmp.replaceFirst("\\D", "q");
+        System.out.println(strTmp);
+        String packageName = "com.hongdu";
+        System.out.println(packageName.replaceAll("\\.", "/"));
+        String packageName2 = "com.hongdu.one.one";
+        System.out.println(packageName2.replaceAll("\\.", "/"));
     }
 
     /**

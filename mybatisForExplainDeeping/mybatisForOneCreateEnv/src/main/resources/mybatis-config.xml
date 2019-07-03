@@ -26,6 +26,8 @@
 <!--        <mapper resource="com/hongdu/mybatis/one/mapper/UserMapper.xml"/>-->
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/RoleMapper.xml"/>
+        <mapper resource="mapper/TtOrderMapper.xml"/>
+        <mapper resource="mapper/TtUserMapper.xml"/>
     </mappers>
 
 </configuration>

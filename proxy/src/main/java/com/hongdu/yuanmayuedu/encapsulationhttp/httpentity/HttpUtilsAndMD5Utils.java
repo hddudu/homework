@@ -30,6 +30,16 @@ import java.util.Vector;
  */
 public class HttpUtilsAndMD5Utils {
 
+    public static final int CONNECTION_TIMEOUT = 60 * 1000;
+
+    public static final int SOCKET_TIMEOUT = 60 * 1000;
+
+    public static final String USER_AGENT_HEADER = "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36";
+    public static final String ACCEPT_HEADER = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+    public static final String ACCEPT_LANGUAGE_HEADER = "zh-CN,zh;q=0.8,en;q=0.6";
+
+
+
     private  String defaultContentEncoding;
 
     public HttpUtilsAndMD5Utils() {

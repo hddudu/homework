@@ -13,6 +13,7 @@
     <module>taskscheduledfordu</module>
       <module>differenceForEverything</module>
     <module>mybatisForExplainDeeping</module>
+      <module>SpringJpaDemo</module>
   </modules>
 
   <name>homework</name>

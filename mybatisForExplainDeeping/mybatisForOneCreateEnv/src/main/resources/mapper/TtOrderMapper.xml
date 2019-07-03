@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.hongdu.mybatis.one.mapper.TtOrderMapper">
+    <!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复
+    使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型
+    resultType="me.gacl.domain.User"就表示将查询结果封装成一个User类的对象返回
+    User类就是users表所对应的实体类
+    -->
+    <!--
+        根据id查询得到一个user对象
+     -->
+    <!-- 万能的resultMap-->
+    <resultMap id="baseTrOrderResultMap" type="com.hongdu.mybatis.one.pojo.TtOrder">
+        <id column="id" property="id"  jdbcType="INTEGER"/>
+        <result column="userId" property="userId"  jdbcType="INTEGER"/>
+        <result column="number" property="number"  jdbcType="VARCHAR"/>
+        <result column="createTime" property="createTime" jdbcType="DATE" javaType="java.util.Date"/>
+        <result column="note" property="note"/>
+
+        <association property="ttUser" column="userId" javaType="com.hongdu.mybatis.one.pojo.TtUser">
+            <id column="id" property="id" jdbcType="INTEGER" javaType="INTEGER" typeHandler=""/>
+            <result column="userName" property="userName" jdbcType="VARCHAR"/>
+            <result column="sex" property="sex" jdbcType="INTEGER"/>
+            <result column="birthDay" property="birthDay" jdbcType="DATE" javaType="java.util.Date"/>
+            <result column="address" property="address" jdbcType="VARCHAR"/>
+        </association>
+
+    </resultMap>
+    <!-- 万能的resultMap-->
+    <select id="listTtOrders" parameterType="java.util.Map"
+            resultType="baseTrOrderResultMap">
+         select * from tt_order
+    </select>
+
+
+</mapper>

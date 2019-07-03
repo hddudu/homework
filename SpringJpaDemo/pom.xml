@@ -9,16 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mybatisForExplainDeeping</artifactId>
+    <artifactId>SpringJpaDemo</artifactId>
     <packaging>pom</packaging>
 
-    <name>mybatisForExplainDeeping Maven Webapp</name>
+    <name>SpringJpaDemo Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
     <modules>
-        <module>mybatisForOneCreateEnv</module>
-        <module>mybatisForOneHigherUse</module>
-        <module>mybatisForOnePlusUse</module>
+        <module>SpringJpaEnvCreateOne</module>
     </modules>
 
     <properties>
@@ -34,17 +32,10 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-    <!--        lombok插件-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
-        </dependency>
-
     </dependencies>
 
     <build>
-        <finalName>mybatisForExplainDeeping</finalName>
+        <finalName>SpringJpaDemo</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
