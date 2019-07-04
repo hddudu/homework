@@ -44,6 +44,11 @@ public class HdDispatcherServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 
         //1: 加载配置文件 从web.xml中加载初始化属性值 ： initParam
-
+        //2: 解析配置文件 ： 读取包名
+        //3： 初始化bean ： 根据包名初始化类 及 类实例
+        //  3.1: 初始化所有相关的实例， 并且放入到IOC容器中
+        //  3.2： 完成依赖注入
+        //4： 初始化化 handlerMapping
+        //运行阶段
     }
 }

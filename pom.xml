@@ -14,6 +14,10 @@
       <module>differenceForEverything</module>
     <module>mybatisForExplainDeeping</module>
       <module>SpringJpaDemo</module>
+      <module>SpringRedisDemo</module>
+      <module>SSMTemplateWithConfigFile</module>
+    <module>MybatisGeneratorProjectDemo</module>
+    <module>SSMLuceneRedisMavenDemo</module>
   </modules>
 
   <name>homework</name>

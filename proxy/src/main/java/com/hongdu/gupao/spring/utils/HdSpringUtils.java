@@ -1,5 +1,6 @@
 package com.hongdu.gupao.spring.utils;
 
+import com.hongdu.filescaozuo.FileSuffixType;
 import com.hongdu.hdutil.HdJavaEveUtils;
 import org.junit.Test;
 
@@ -61,6 +62,28 @@ public class HdSpringUtils {
                     String clazzName = packageName + "." + f.getName().replaceAll(".class","");
                     classMap.put(clazzName, null);
                 }
+            }
+        }
+    }
+    private void doScanner(String scanPackage) {
+        URL url = this.getClass().getClassLoader().getResource(scanPackage.replaceAll("\\.","/"));
+        File classDir = new File(url.getFile());
+        for (File file : classDir.listFiles()) {
+            if(file.isDirectory()){ doScanner(scanPackage + "." +  file.getName());}else {
+                if(!file.getName().endsWith(".class")){continue;}
+                String clazzName = (scanPackage + "." + file.getName().replace(".class",""));
+                classMap.put(clazzName,null);
+            }
+        }
+    }
+    private void doScanner2(String scanPackage) {
+        URL url = this.getClass().getClassLoader().getResource(scanPackage.replaceAll("\\.","/"));
+        File classDir = new File(url.getFile());
+        for (File file : classDir.listFiles()) {
+            if(file.isDirectory()){ doScanner(scanPackage + "." +  file.getName());}else {
+                if(!file.getName().endsWith(".class")){continue;}
+                String clazzName = (scanPackage + "." + file.getName().replace(".class",""));
+                classMap.put(clazzName,null);
             }
         }
     }
@@ -134,12 +157,35 @@ public class HdSpringUtils {
         doScan2Map(packageName);
         HdJavaEveUtils.printMap(classMap);
     }
+    @Test
+    public void scanPackageTest() {
+        System.out.println(this.getClass().getClassLoader().getResource(""));
+        String packageName = "com.hongdu";
+        System.out.println(packageName.replaceAll("\\.", "/"));
+        System.out.println(packageName);
+        doScanner(packageName);
+        HdJavaEveUtils.printMap(classMap);
+    }
+    @Test
+    public void scanPackage2Test() {
+        System.out.println(this.getClass().getClassLoader().getResource(""));
+        String packageName = "com.hongdu";
+        System.out.println(packageName.replaceAll("\\.", "/"));
+        System.out.println(packageName);
+        doScanner2(packageName);
+        HdJavaEveUtils.printMap(classMap);
+    }
 
     @Test
     public void test03() {
         System.out.println(this.getClass().getClassLoader().getResource(""));
         doScan2Map("com.hongdu");
         HdJavaEveUtils.printMap(classMap);
+    }
+
+    @Test
+    public void enumTest() {
+        System.out.println(FileSuffixType.valueOf(FileSuffixType.SQL.getSuffix()));
     }
 
 
