@@ -37,7 +37,7 @@ public class HdSpringUtils {
     //根据包路径 读取文件 : 将文件存入到容器中
     //容器可以是list或者map
 
-    public static Map<String, String> classMap = new HashMap<>(128);
+    public static Map<String, Object> classMap = new HashMap<>(128);
 
     /**
      * 扫描类文件到map容器中：
@@ -155,7 +155,7 @@ public class HdSpringUtils {
         System.out.println(packageName.replaceAll("\\.", "/"));
         System.out.println(packageName);
         doScan2Map(packageName);
-        HdJavaEveUtils.printMap(classMap);
+//        HdJavaEveUtils.printMap(classMap);
     }
     @Test
     public void scanPackageTest() {
@@ -164,7 +164,7 @@ public class HdSpringUtils {
         System.out.println(packageName.replaceAll("\\.", "/"));
         System.out.println(packageName);
         doScanner(packageName);
-        HdJavaEveUtils.printMap(classMap);
+//        HdJavaEveUtils.printMap(classMap);
     }
     @Test
     public void scanPackage2Test() {
@@ -173,14 +173,14 @@ public class HdSpringUtils {
         System.out.println(packageName.replaceAll("\\.", "/"));
         System.out.println(packageName);
         doScanner2(packageName);
-        HdJavaEveUtils.printMap(classMap);
+//        HdJavaEveUtils.printMap(classMap);
     }
 
     @Test
     public void test03() {
         System.out.println(this.getClass().getClassLoader().getResource(""));
         doScan2Map("com.hongdu");
-        HdJavaEveUtils.printMap(classMap);
+//        HdJavaEveUtils.printMap(classMap);
     }
 
     @Test

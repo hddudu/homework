@@ -25,14 +25,15 @@ public @interface HdRequestMapping {
      * 默认值必须为空
      * @return
      */
-    @HdAliasFor("path")
-    String[] value() default {};
+//    @HdAliasFor("path")
+//    String[] value() default {};
+    String value() default "";
 
     /**
      * 互为别名  ： 是path的别名 value， 就是注解value
      * 默认值必须为空
      * @return
      */
-    @HdAliasFor("value")
-    String[] path() default {};
+//    @HdAliasFor("value")
+//    String[] path() default {};
 }
