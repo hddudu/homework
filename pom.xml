@@ -18,6 +18,8 @@
       <module>SSMTemplateWithConfigFile</module>
     <module>MybatisGeneratorProjectDemo</module>
     <module>SSMLuceneRedisMavenDemo</module>
+      <module>SSMRedisLAYUIDemo</module>
+      <module>SSMRabbitMQDemo</module>
   </modules>
 
   <name>homework</name>
@@ -37,6 +39,8 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <!-- spring的基础依赖包:   -->
+<!--    beans context aop core-->
   </dependencies>
 
   <build>
