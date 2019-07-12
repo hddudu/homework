@@ -19,7 +19,9 @@
 <!--	</servlet-mapping>-->
 	<servlet>
 		<servlet-name>hdmvc</servlet-name>
-		<servlet-class>com.hongdu.gupao.spring.v2.HdDispatcherServlet</servlet-class>
+<!--		<servlet-class>com.hongdu.gupao.spring.v1.HdDispatcherServlet</servlet-class>-->
+<!--		<servlet-class>com.hongdu.gupao.spring.v2.HdDispatcherServlet</servlet-class>-->
+		<servlet-class>com.hongdu.gupao.spring.v3.HdDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>application.properties</param-value>

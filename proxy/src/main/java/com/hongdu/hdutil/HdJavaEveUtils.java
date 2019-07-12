@@ -110,21 +110,7 @@ public class HdJavaEveUtils {
         }
     }
 
-    /**
-     * 一次将文本文件读取出来
-     * @param fileName
-     */
-    public String read2String(String fileName) throws IOException {
-        String encoding = "UTF-8";
-        File file = new File(fileName);
-        Long len = file.length();
-        InputStream in = new FileInputStream(file);
-        byte[] fileContent = new byte[len.intValue()];
-        byte[] fileContent2 = new byte[in.available()];
-        in.read(fileContent2);
-        in.close();
-        return new String(fileContent, encoding);
-    }
+
 
     //遍历map集合 并打印
     public void printMap(Map<String, Object> map) {
@@ -202,5 +188,54 @@ public class HdJavaEveUtils {
     }
 
     private HdJavaEveUtils() {
+    }
+
+    /**
+     * 将流读成字符串 ： 其实就是输出这个输入流
+     * @param inputStream
+     * @return
+     */
+    public  String readInputStream2String(InputStream inputStream) throws IOException {
+        int len;
+        byte[] bytes = new byte[1024];
+        //捕获内存缓冲区的数据转换为字节数组
+        ByteArrayOutputStream bo = new ByteArrayOutputStream();
+        while ((len = inputStream.read(bytes)) != -1) {
+            //循环读取内容,将输入流的内容放进缓冲区中
+            bo.write(bytes, 0, len);
+        }
+        return new String(bo.toByteArray(), "UTF-8");
+    }
+
+    /**
+     * 将文件读取成为字符串
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    public  String readInputStream2String(String file) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+        StringBuilder sb = new StringBuilder();
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+            sb.append(line).append("\n");
+        }
+        return sb.toString();
+    }
+    /**
+     * 一次将文本文件读取出来
+     * @param fileName
+     */
+    public String read2String(String fileName) throws IOException {
+        String encoding = "UTF-8";
+        File file = new File(fileName);
+        Long len = file.length();
+        InputStream in = new FileInputStream(file);
+        byte[] fileContent = new byte[len.intValue()];
+        byte[] fileContent2 = new byte[in.available()];
+        in.read(fileContent2);
+        in.close();
+        return new String(fileContent, encoding);
     }
 }

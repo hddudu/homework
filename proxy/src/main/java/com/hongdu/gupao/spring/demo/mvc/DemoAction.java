@@ -24,7 +24,7 @@ public class DemoAction {
 
     @HdAutowired
     private IDemoService demoService;
-
+    //http://localhost:8282/proxy7/mvctest/query?name=hongdu
     @HdRequestMapping("/query")
     public void query(HttpServletRequest request, HttpServletResponse response,
                       @HdRequestParam("name")String name) {
@@ -36,7 +36,8 @@ public class DemoAction {
         }
     }
 
-    @HdRequestMapping("add")
+    //http://localhost:8282/proxy7/mvctest/add?name=hongdu&a=1&b=1
+    @HdRequestMapping("/add")
     public void add(HttpServletRequest request, HttpServletResponse response,
                     @HdRequestParam("name")String name, @HdRequestParam("b")Integer b,  @HdRequestParam("a")Integer a) throws IOException {
         try {
@@ -46,7 +47,7 @@ public class DemoAction {
         }
     }
 
-    @HdRequestMapping("add2")
+    @HdRequestMapping("/add2")
     public void add2(HttpServletRequest request, HttpServletResponse response,
                     @HdRequestParam("name")String name) throws IOException {
         try {

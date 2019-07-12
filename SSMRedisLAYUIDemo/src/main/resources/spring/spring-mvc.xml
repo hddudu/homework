@@ -15,8 +15,8 @@
      -->
     <!-- 添加注解驱动  使用注解标注的类生效-->
     <mvc:annotation-driven />
-    <!-- 设置能访问静态资源 -->
-    <mvc:default-servlet-handler/>
+    <!-- 设置能访问静态资源 跟过滤所有资源配置进行配套-->
+<!--    <mvc:default-servlet-handler/>-->
     <!--扫描controller-->
     <context:component-scan base-package="com.hd.ssm.controller" />
 
@@ -30,18 +30,65 @@
 
     <!--InternalResourceViewResolver为UrlBasedViewResolver的子类，
     它将InternalResourceView作为缺省的View类，如果当前classpath中有jstl的jar包时则使用JstlView作为缺省的view来渲染结果。
-    因此以下使用InternalResourceViewResolver的定义应该和之前使用UrlBasedViewResolver定义的viewresolver的作用相同。-->
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
+    因此以下使用InternalResourceViewResolver的定义应该和之前使用UrlBasedViewResolver定义的viewresolver的作用相同。
+    https://www.cnblogs.com/digdeep/p/4610844.html 配置一个内容协商解析器
+    -->
+
+    <!-- SpringMVC路由配置 ： 接受协商配置 -->
+    <bean id="contentNegotiationManager"
+          class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="defaultContentType" value="application/json" />
+        <property name="mediaTypes">
+            <map>
+                <entry key="htm" value="text/html" />
+                <entry key="json" value="application/json" />
+                <entry key="xml" value="application/xml" />
+            </map>
+        </property>
+    </bean>
+    <bean
+            class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="0" />
+        <property name="contentNegotiationManager" ref="contentNegotiationManager" />
+        <property name="viewResolvers">
+            <list>
+                <bean id="viewResolver"
+                      class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+                    <property name="viewClass"
+                              value="org.springframework.web.servlet.view.JstlView" />
+                    <property name="prefix" value="/WEB-INF/jsp/" />
+                    <property name="suffix" value=".jsp" />
+                    <property name="order" value="0" />
+                </bean>
+               <!-- <bean
+                        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="viewClass"
+                              value="org.springframework.web.servlet.view.JstlView" />
+                    <property name="prefix" value="/WEB-INF/view/" />
+                    <property name="suffix" value=".jsp" />
+                    <property name="order" value="1" />
+                </bean>-->
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <!-- 输出为JSON数据 -->
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+                <!-- 输出为xml数据 -->
+                <bean id="marshallingView"
+                      class="org.springframework.web.servlet.view.xml.MarshallingView">
+                    <property name="marshaller">
+                        <bean id="xStreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
+                            <property name="autodetectAnnotations" value="true" />
+                        </bean>
+                    </property>
+                    <property name="contentType" value="application/xml" />
+                </bean>
+            </list>
+        </property>
     </bean>
     <!-- jsp page related... end -->
-
-    <!-- rest json related... start -->
+    <!-- 避免IE执行AJAX时,返回JSON出现下载文件 application/json text/html -->
     <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">
@@ -52,6 +99,7 @@
         </property>
     </bean>
 
+
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -60,4 +108,6 @@
         </property>
     </bean>
     <!-- rest json related... end -->
+
+
 </beans>
