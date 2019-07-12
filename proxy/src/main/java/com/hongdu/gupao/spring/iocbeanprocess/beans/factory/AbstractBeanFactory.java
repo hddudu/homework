@@ -66,7 +66,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
             //怎么个增强法呢？ 就是看实现 的前置处理时怎样的呐？ 应该是类似切面处理的格式
             beanDefinition.setBean(bean);
         }
-        System.out.println(name + "::::" + bean);
+//        System.out.println(name + "::::" + bean);
         return bean;
     }
 

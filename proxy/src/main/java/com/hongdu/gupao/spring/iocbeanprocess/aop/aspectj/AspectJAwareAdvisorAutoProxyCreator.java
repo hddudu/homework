@@ -30,6 +30,9 @@ public class AspectJAwareAdvisorAutoProxyCreator implements BeanPostProcessor, B
     /**
      * 后置 处理 增强
      *      那么原来的bean 已经不是原装的bean了， 它已经是被代理的bean对象了 ： 携带切面方法的 代理类 的代理对象了
+     *
+     *      TODO 经过测试 ： 这一段代码还是不清楚是做什么用的？？？？？？？？？？
+     *      准确的说是 ： 是注释的那个部分的作用 ： 它生成了代理类， 而且是在注入之前生成的代理类 所以有问题了！
      * @param bean
      * @param beanName
      * @return
