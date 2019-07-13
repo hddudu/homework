@@ -25,8 +25,18 @@ public class DemoAction {
     @HdAutowired
     private IDemoService demoService;
     //http://localhost:8282/proxy7/mvctest/query?name=hongdu
-    @HdRequestMapping("/query")
+    @HdRequestMapping("/query.*")
     public void query(HttpServletRequest request, HttpServletResponse response,
+                      @HdRequestParam("name")String name) {
+        String result = demoService.get(name);
+        try {
+            response.getWriter().write(result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @HdRequestMapping("/query2")
+    public void query2(HttpServletRequest request, HttpServletResponse response,
                       @HdRequestParam("name")String name) {
         String result = demoService.get(name);
         try {

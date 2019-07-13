@@ -65,7 +65,7 @@ public class HdDispatcherServlet extends HttpServlet {
                 resp.getWriter().write("404 Not Found");
                 return;
             }
-            //获取方法的参数列表
+            //获取方法的参数列表 ： 运行时
             Class<?>[] paramTypes = handler.method.getParameterTypes();
 
             //保存所有需要自动赋值的参数值
@@ -79,6 +79,7 @@ public class HdDispatcherServlet extends HttpServlet {
                     continue;
                 }
                 int index = handler.paramIndexMapping.get(param.getKey());
+                //给实参赋值.....................
                 paramValues[index] = convert(paramTypes[index], value);
             }
             //设置方法中的request和response对象
@@ -147,11 +148,20 @@ public class HdDispatcherServlet extends HttpServlet {
         return null;
     }
 
+    @Test
+    public void patternTest() {
+        String regex = "/query.*";
+        String mat = "/queryXXX";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(mat);
+        System.out.println("是否匹配 ： " + matcher.matches());
+    }
+
     @Override
     public void init(ServletConfig config) throws ServletException {
 
         doLoadConfig(config.getInitParameter(LOCATION));
-        doSacnner(loadProperties.getProperty("scanPackageName"));
+        doSacnner(loadProperties.getProperty("scanPackage"));
         // : 扫描 包路径文件 错误： 现在只是先初始化所有包路径下的实例
         doInstance();
         //准备依赖注入 : 将扫描到的 实例化的 类 ： 进行依赖注入 （就是往类中的字段属性中设置值）
@@ -164,6 +174,8 @@ public class HdDispatcherServlet extends HttpServlet {
         //提示信息
         System.out.println("hongdu mvcframework is init");
     }
+
+
 
     private void initHandlerMapping() {
         if (iocContainer.isEmpty()) {
@@ -301,6 +313,10 @@ public class HdDispatcherServlet extends HttpServlet {
      * @author Tom
      * 内部类
      */
+    //为什么不用Map
+        //你用map， key只能是url
+        //而这个handler本身已经具备url和method的对应关系， 已经具备了map的功能
+        //g根据设计原则 ： 单一职责，
     private class Handler {
         //控制器对象 :保存方法的实例
         protected Object controller;

@@ -1,14 +1,17 @@
 package com.hongdu.hdutil;
 
 import com.hongdu.filescaozuo.FileSuffixType;
+import com.hongdu.gupao.spring.annotation.HdRequestParam;
+import com.hongdu.gupao.spring.demo.mvc.DemoAction;
 import com.hongdu.yuanmayuedu.encapsulationhttp.httpentity.UUIDUtil;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @ClassName HdJavaEveUtils
@@ -147,11 +150,6 @@ public class HdJavaEveUtils {
     }
 
 
-//    public static void main(String[] args) {
-//        System.out.println(FileSuffixType.values());//[Lcom.hongdu.filescaozuo.FileSuffixType;@4a574795
-////        System.out.println(FileSuffixType.valueOf(FileSuffixType.SQL.getSuffix()));
-//        System.out.println(FileSuffixType.SQL.getSuffix());//.sql
-//    }
 
 
     /**
@@ -237,5 +235,90 @@ public class HdJavaEveUtils {
         in.read(fileContent2);
         in.close();
         return new String(fileContent, encoding);
+    }
+
+    /**
+     * 解析所有的 --》 必定返回的是 List<Map> 类型
+     * @param clazz 解析的类
+     * @param methodName 解析的方法名
+     * @return
+     */
+    public Map parseMethodParamToMap(Class<?> clazz, String methodName) throws NoSuchMethodException {
+        Map map = new HashMap(32);
+        Method method = clazz.getMethod(methodName);
+        //提取方法中加了注解的参数
+        //把方法上的注解拿到， 得到一个二维数组
+        //y因为一个字段可以有多个注解，
+        //而且一个方法又有多个参数
+        Annotation[][] pa = method.getParameterAnnotations();
+        for (int i = 0; i < pa.length; i++) {
+            for (Annotation a : pa[i]) {
+                if(a instanceof HdRequestParam) {
+                    String paramName = ((HdRequestParam) a) .value();
+                    if(!"".equals(paramName.trim())) {
+                        map.put(paramName, i);
+                    }
+                }
+            }
+        }
+        return map;
+    }
+
+//    @Test
+    public void parseMethodParamToMapTest() throws NoSuchMethodException {
+        Map map = parseMethodParamToMap(DemoAction.class, "query");
+        printMap(map);
+    }
+
+    /**
+     * 解析的是 ： 方法中的注解参数名 以及对应的参数位置
+     *  name : 2
+     * @param method
+     * @return
+     * @throws NoSuchMethodException
+     */
+    public Map parseMethodParamToMap(Method method) throws NoSuchMethodException {
+        Map map = new HashMap(32);
+        //获取注解参数
+        Annotation[][] pa = method.getParameterAnnotations();
+        for (int i = 0; i < pa.length; i++) {
+            for (Annotation a : pa[i]) {
+                if(a instanceof HdRequestParam) {
+                    String paramName = ((HdRequestParam) a) .value();
+                    if(!"".equals(paramName.trim())) {
+                        map.put(paramName, i);
+                    }
+                }
+            }
+        }
+        //提取其参数以及位置
+        Class<?>[] paramsTypes = method.getParameterTypes();
+        for (int i = 0; i < paramsTypes.length; i++) {
+            Class<?> type = paramsTypes[i];
+            if(type == HttpServletRequest.class
+                    || type == HttpServletResponse.class) {
+                map.put(type.getName(), i);
+            }
+        }
+        return map;
+    }
+
+
+    /**
+     * 方法普通参数类型以及位置：javax.servlet.http.HttpServletResponse : 1
+     * 方法普通参数类型以及位置： javax.servlet.http.HttpServletRequest : 0
+     * 注解参数名以及位置 ： name : 2 （应该是有一种默认是java.lnag.String类型的感觉）
+     * @param args
+     * @throws NoSuchMethodException
+     */
+    public static void main(String[] args) throws NoSuchMethodException {
+//        System.out.println(FileSuffixType.values());//[Lcom.hongdu.filescaozuo.FileSuffixType;@4a574795
+//        System.out.println(FileSuffixType.valueOf(FileSuffixType.SQL.getSuffix()));
+//        System.out.println(FileSuffixType.SQL.getSuffix());//.sql
+        HdJavaEveUtils javaEveUtils = new HdJavaEveUtils();
+//      parseMethodParamToMapTest();
+        Method method = DemoAction.class.getMethod("query", HttpServletRequest.class, HttpServletResponse.class, String.class);
+        Map map = javaEveUtils.parseMethodParamToMap(method);
+        javaEveUtils.printMap(map);
     }
 }

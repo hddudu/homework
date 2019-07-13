@@ -135,6 +135,7 @@ public class HdDispatcherServlet extends HttpServlet {
                         if(a instanceof HdRequestParam){
                             String paramName = ((HdRequestParam) a).value();
                             if(!"".equals(paramName.trim())){
+//                                System.out.println(Arrays.toString(parameterMap.get(paramName)));
                                 String value = Arrays.toString(parameterMap.get(paramName))
                                         //去掉 [ 或者 ] 将数组转字符串 后去掉中括号
                                         .replaceAll("\\[|\\]","")
@@ -164,7 +165,9 @@ public class HdDispatcherServlet extends HttpServlet {
         //通过反射拿到method所在class，拿到class之后还是拿到class的名称
         //再调用toLowerFirstCase获得beanName
         String beanName = toLowerFirstCase(method.getDeclaringClass().getSimpleName());
-        method.invoke(ioc.get(beanName),new Object[]{req,resp,params.get("name")[0]});
+        System.out.println(params.get("name").toString());
+        System.out.println(params.get("name"));
+        method.invoke(ioc.get(beanName),new Object[]{req,resp,params.get("name")});
     }
 
 //    private void doDispatch(HttpServletRequest req, HttpServletResponse resp) throws IOException, InvocationTargetException, IllegalAccessException {

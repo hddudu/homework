@@ -20,6 +20,7 @@
     <module>SSMLuceneRedisMavenDemo</module>
       <module>SSMRedisLAYUIDemo</module>
       <module>SSMRabbitMQDemo</module>
+      <module>SpringAopDemo</module>
   </modules>
 
   <name>homework</name>
