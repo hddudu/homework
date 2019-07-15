@@ -16,16 +16,12 @@
         <property name="outputService" ref="outputService"></property>
     </bean>-->
     <bean id="outputService" class="com.hongdu.gupao.spring.OutputServiceImpl">
-        <!--        <property name="helloWorldService" ref="helloWorldService"></property>-->
     </bean>
-
     <bean id="helloWorldService" class="com.hongdu.gupao.spring.HelloWorldServiceImpl">
         <property name="text" value="Hello World!Hello World!注入的属性打印!"></property>
         <property name="outputService" ref="outputService"></property>
     </bean>
-
     <bean id="autoProxyCreator" class="com.hongdu.gupao.spring.iocbeanprocess.aop.aspectj.AspectJAwareAdvisorAutoProxyCreator">
-
     </bean>
 
     <bean id="timeInterceptor" class="com.hongdu.gupao.spring.aop.TimerInterceptor"></bean>

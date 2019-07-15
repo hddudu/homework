@@ -1,10 +1,14 @@
 package com.hongdu.gupao.spring.iocbeanprocess.aop.aspectj;
 
 import com.hongdu.gupao.spring.iocbeanprocess.aop.BeanFactoryAware;
+import com.hongdu.gupao.spring.iocbeanprocess.aop.ProxyFactory;
+import com.hongdu.gupao.spring.iocbeanprocess.aop.TargetSource;
 import com.hongdu.gupao.spring.iocbeanprocess.beans.BeanPostProcessor;
 import com.hongdu.gupao.spring.iocbeanprocess.beans.factory.AbstractBeanFactory;
 import com.hongdu.gupao.spring.iocbeanprocess.beans.factory.BeanFactory;
 import org.aopalliance.intercept.MethodInterceptor;
+
+import java.util.List;
 
 /**
  * @ClassName AspectJAwareAdvisorAutoProxyCreator
@@ -51,22 +55,22 @@ public class AspectJAwareAdvisorAutoProxyCreator implements BeanPostProcessor, B
         /**
          * 注释： 表达式这一段
          */
-//        if(beanFactory != null) {
-//            List<AspectJExpressionPointcutAdvisor> advisors = beanFactory
-//                    .getBeansForType(AspectJExpressionPointcutAdvisor.class);
-//            for (AspectJExpressionPointcutAdvisor advisor : advisors) {
-//                if(advisor.getPointcut().getClassFilter().matches(bean.getClass())) {
-//                    ProxyFactory advisedSupport = new ProxyFactory();
-//                    //设置通知器
-//                    advisedSupport.setMethodInterceptor((MethodInterceptor) advisor.getAdvice());
-//                    advisedSupport.setMethodMatcher(advisor.getPointcut().getMethodMatcher());
-//
-//                    TargetSource targetSource = new TargetSource(bean, bean.getClass(), bean.getClass().getInterfaces());
-//                    advisedSupport.setTargetSource(targetSource);
-//                    return advisedSupport.getProxy();
-//                }
-//            }
-//        }
+        if(beanFactory != null) {
+            List<AspectJExpressionPointcutAdvisor> advisors = beanFactory
+                    .getBeansForType(AspectJExpressionPointcutAdvisor.class);
+            for (AspectJExpressionPointcutAdvisor advisor : advisors) {
+                if(advisor.getPointcut().getClassFilter().matches(bean.getClass())) {
+                    ProxyFactory advisedSupport = new ProxyFactory();
+                    //设置通知器
+                    advisedSupport.setMethodInterceptor((MethodInterceptor) advisor.getAdvice());
+                    advisedSupport.setMethodMatcher(advisor.getPointcut().getMethodMatcher());
+
+                    TargetSource targetSource = new TargetSource(bean, bean.getClass(), bean.getClass().getInterfaces());
+                    advisedSupport.setTargetSource(targetSource);
+                    return advisedSupport.getProxy();
+                }
+            }
+        }
         return bean;
     }
 }

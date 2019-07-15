@@ -21,6 +21,9 @@
       <module>SSMRedisLAYUIDemo</module>
       <module>SSMRabbitMQDemo</module>
       <module>SpringAopDemo</module>
+      <module>SpringMVCDubboDemo</module>
+    <module>SpringMVCDubboDemo2</module>
+    <module>SpringMVCDubboDemo3</module>
   </modules>
 
   <name>homework</name>

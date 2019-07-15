@@ -12,28 +12,44 @@
 <!--		<servlet-class>com.hongdu.gupao.commission.mvcdispatcher.DispatcherServlet</servlet-class>-->
 <!--		<load-on-startup>1</load-on-startup>-->
 <!--	</servlet>-->
-
+<!--初期版本-->
 <!--	<servlet-mapping>-->
 <!--		<servlet-name>delegateServlet</servlet-name>-->
 <!--		<url-pattern>/*</url-pattern>-->
 <!--	</servlet-mapping>-->
-	<servlet>
-		<servlet-name>hdmvc</servlet-name>
+<!--	<servlet>-->
+<!--		<servlet-name>hdmvc</servlet-name>-->
 <!--		<servlet-class>com.hongdu.gupao.spring.v1.HdDispatcherServlet</servlet-class>-->
 <!--		<servlet-class>com.hongdu.gupao.spring.v2.HdDispatcherServlet</servlet-class>-->
-		<servlet-class>com.hongdu.gupao.spring.v3.HdDispatcherServlet</servlet-class>
+<!--		<servlet-class>com.hongdu.gupao.spring.v3.HdDispatcherServlet</servlet-class>-->
+<!--		<init-param>-->
+<!--			<param-name>contextConfigLocation</param-name>-->
+<!--			<param-value>application.properties</param-value>-->
+<!--		</init-param>-->
+<!--		<load-on-startup>1</load-on-startup>-->
+<!--	</servlet>-->
+
+<!--	<servlet-mapping>-->
+<!--		<servlet-name>hdmvc</servlet-name>-->
+<!--		<url-pattern>/*</url-pattern>-->
+<!--	</servlet-mapping>-->
+
+	<!--高仿真版本-->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>com.hongdu.gupao.spring.spring.webmvc.HdDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>application.properties</param-value>
 		</init-param>
+<!--		默认就加载-->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
+<!--/表示拦截所有的资源 和 请求	-->
 	<servlet-mapping>
-		<servlet-name>hdmvc</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
 
 </web-app>
 
