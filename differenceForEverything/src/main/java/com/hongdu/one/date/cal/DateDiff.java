@@ -24,4 +24,16 @@ public class DateDiff {
         Long i = 0L;
         System.out.println(i == 0);
     }
+
+    @Test
+    public void test02() {
+//        2020-07-05 16:41:33.000
+        Date cur = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        System.out.println(cur);
+        System.out.println(sdf.format(cur));
+        //20190715172239
+        System.out.println(Long.valueOf(sdf.format(cur)));
+
+    }
 }

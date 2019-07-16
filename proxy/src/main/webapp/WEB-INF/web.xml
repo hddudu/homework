@@ -37,10 +37,10 @@
 	<!--高仿真版本-->
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
-		<servlet-class>com.hongdu.gupao.spring.spring.webmvc.HdDispatcherServlet</servlet-class>
+		<servlet-class>com.hongdu.gupao.spring.spring.webmvc.servlet.HdDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>application.properties</param-value>
+			<param-value>classpath:application-mvc.properties</param-value>
 		</init-param>
 <!--		默认就加载-->
 		<load-on-startup>1</load-on-startup>

@@ -1,10 +1,15 @@
-package com.hongdu.gupao.spring.spring.annotation;
+package com.hongdu.spring.annotation;
 
 import java.lang.annotation.*;
 
-@Target({ElementType.TYPE})
+/**
+ * 派生 注解
+ */
+
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface HdComponent {
+
     String value() default "";
 }

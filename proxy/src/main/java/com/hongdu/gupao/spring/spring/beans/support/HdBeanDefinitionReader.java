@@ -39,8 +39,9 @@ public class HdBeanDefinitionReader {
     public HdBeanDefinitionReader(String...locations) {
         //通过URL 定位找到其所对应的文件
         //通过web.xml加载进行来的话
-        //InputStream inputStream = this.getClass().getResourceAsStream(locations[0].replaceAll("classpath:", ""));
-        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(locations[0]);
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(locations[0].replaceAll("classpath:", ""));
+        //本地测试采用这个形式获取 application.properties文件
+//        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(locations[0]);
         try {
             config.load(inputStream);
         } catch (IOException e) {

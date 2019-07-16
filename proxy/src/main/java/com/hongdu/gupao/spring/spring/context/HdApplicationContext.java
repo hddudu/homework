@@ -36,13 +36,19 @@ public class HdApplicationContext extends HdDefaultListableBeanFactory implement
     //通用的IOC容器
     private Map<String, HdBeanWrapper> factoryBeanInstanceCaches = new ConcurrentHashMap<>();
 
+
     /**
      * 数组 路径
      * @param configLocations
      */
     public HdApplicationContext(String...configLocations) {
         this.configLocations = configLocations;
-
+        try {
+            //调用 ioc di 模板 过程
+            refresh();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -100,7 +106,7 @@ public class HdApplicationContext extends HdDefaultListableBeanFactory implement
         postProcessor.postProcessAfterInitialization(instance, beanName);
 
         //4： 注入
-        //populateBean(beanName, beanDefiniton, beanWrapper);
+        populateBean(beanName, beanDefiniton, beanWrapper);
 
         return this.factoryBeanInstanceCaches.get(beanName).getWrappedInstance();
     }
@@ -136,9 +142,9 @@ public class HdApplicationContext extends HdDefaultListableBeanFactory implement
 
             //为什么会为NULL，先留个坑
             try {
-                if(null == this.factoryBeanInstanceCaches.get(autowiredName).getWrappedInstance()) {
-                    continue;
-                }
+//                if(null == this.factoryBeanInstanceCaches.get(autowiredName).getWrappedInstance()) {
+//                    continue;
+//                }
                 field.set(instance, this.factoryBeanInstanceCaches.get(autowiredName).getWrappedInstance());
             } catch (Exception e) {
                 e.printStackTrace();

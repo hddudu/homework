@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class HdDefaultListableBeanFactory extends HdAbstractApplicationContext {
 
     /**
-     * 存储注册信息的BeanDefinition
+     * 存储注册信息的BeanDefinition : final
      */
     protected final Map<String, HdBeanDefiniton> beanDefinitonMap = new ConcurrentHashMap<String, HdBeanDefiniton>();
 
