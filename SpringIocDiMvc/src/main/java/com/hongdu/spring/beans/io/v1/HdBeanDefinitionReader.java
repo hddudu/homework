@@ -32,6 +32,50 @@ public class HdBeanDefinitionReader extends HdAbstractResourceLoader {
         doLoadProperties();
         doScanner((String)super.config.get(SCAN_PACKAGE));
     }
+
+    public List<HdBeanDefinition> loadBeanDefinition3() {
+        if (super.registryBeanClasses.isEmpty()) {
+            return null;
+        }
+
+        List<HdBeanDefinition> result = new ArrayList<HdBeanDefinition>();
+        try {
+            for (String beanClassName : registryBeanClasses) {
+                Class<?> beanClass = Class.forName(beanClassName);
+                if(beanClass.isInterface()) {continue;}
+                //beanName有三种情况:
+                //1、默认是类名首字母小写
+                //2、自定义名字
+                //3、接口注入
+                String factoryBeanName = beanClass.newInstance().getClass().getSimpleName();
+                String beanClassName2 = beanClass.newInstance().getClass().getName();
+                HdBeanDefinition definition = new HdBeanDefinition();
+                definition.setFactoryBeanName(factoryBeanName);
+                definition.setBeanClassName(beanClassName2);
+//                System.out.println("名字是否一样： " + (beanClassName.equals(beanClassName2)));
+                result.add(definition);
+                //如果没有将接口添加到 内存中去的话， 那么注入将会是一个失败的过程
+                Class<?>[] interfaces = beanClass.getInterfaces();
+                for (Class<?> i : interfaces) {
+                    //如果是多个实现类，只能覆盖
+                    //为什么？因为Spring没那么智能，就是这么傻
+                    //这个时候，可以自定义名字 : 接口名 + 类名
+                    HdBeanDefinition beanDefinitionsss = new HdBeanDefinition();
+                    //具体的beanClassName 还是 类的名字 ： 类的路径
+                    beanDefinitionsss.setBeanClassName(beanClass.getName());
+                    //factoryBeanName 是 ： 接口的类名
+                    beanDefinitionsss.setFactoryBeanName(i.getName());
+                    result.add(beanDefinitionsss);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    //jiekou 是跳过了 但是注册了父类接口
     public List<HdBeanDefinition> loadBeanDefinitions2() {
         if (super.registryBeanClasses.isEmpty()) {
             return null;
@@ -54,7 +98,9 @@ public class HdBeanDefinitionReader extends HdAbstractResourceLoader {
             if(!beanClass.isInterface() && !Modifier.isAbstract(beanClass.getModifiers())) {
                 HdBeanDefinition definition = new HdBeanDefinition();
                 definition.setBeanClassName(className);
-                definition.setFactoryBeanName(lowerFirst(beanClass.getSimpleName()));
+                //不能用小写进行 设置beanName ： 不然后面可能会找不到
+//                definition.setFactoryBeanName(lowerFirst(beanClass.getSimpleName()));
+                definition.setFactoryBeanName(beanClass.getSimpleName());
                 return definition;
             }
         } catch (Exception e) {

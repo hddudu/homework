@@ -79,5 +79,12 @@ public class MyAction {
 		}
 		return null;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "MyAction{" +
+				"queryService=" + queryService +
+				", modifyService=" + modifyService +
+				'}';
+	}
 }

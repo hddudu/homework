@@ -13,6 +13,7 @@ public class Test {
         HdApplicationContext context = new HdApplicationContext("classpath:application.properties");
         try {
             Object object = context.getBean(MyAction.class);
+            //查看初始化后： factoryBeanInstanceCaches 的属性 ： 里面需要有 一个类依赖另一个类的属性值
             System.out.println(object);
         } catch (Exception e) {
             e.printStackTrace();

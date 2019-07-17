@@ -39,4 +39,8 @@ public abstract class HdAbstractResourceLoader implements HdResourceLoader {
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(configLocations[0].replaceAll("classpath:", ""));
         return inputStream;
     }
+
+    public Properties getConfig() {
+        return config;
+    }
 }

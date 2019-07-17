@@ -12,12 +12,14 @@ import lombok.Data;
 @Data
 public class HdBeanWrapper {
 
+    //wrapperInstance ： 其实就是注入 或者 初始化的类的实例对象
+    //也是注入属性时候需要获取的对象
     private Object wrapperInstance;
     private Class<?> wrapperClass;
 
     public HdBeanWrapper(Object wrapperInstance) {
         this.wrapperInstance = wrapperInstance;
-        this.wrapperClass = this.wrapperInstance.getClass();
+//        this.wrapperClass = this.wrapperInstance.getClass();
     }
 
     public HdBeanWrapper(Object wrapperInstance, Class<?> wrapperClass) {
@@ -26,5 +28,13 @@ public class HdBeanWrapper {
     }
 
     public HdBeanWrapper() {
+    }
+
+    public Object getWrapperInstance() {
+        return this.wrapperInstance;
+    }
+
+    public Class<?> getWrapperClass() {
+        return this.wrapperInstance.getClass();
     }
 }

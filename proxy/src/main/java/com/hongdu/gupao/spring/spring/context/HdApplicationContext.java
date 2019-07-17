@@ -142,9 +142,9 @@ public class HdApplicationContext extends HdDefaultListableBeanFactory implement
 
             //为什么会为NULL，先留个坑
             try {
-//                if(null == this.factoryBeanInstanceCaches.get(autowiredName).getWrappedInstance()) {
-//                    continue;
-//                }
+                if(null == this.factoryBeanInstanceCaches.get(autowiredName)) {
+                    continue;
+                }
                 field.set(instance, this.factoryBeanInstanceCaches.get(autowiredName).getWrappedInstance());
             } catch (Exception e) {
                 e.printStackTrace();
@@ -156,7 +156,7 @@ public class HdApplicationContext extends HdDefaultListableBeanFactory implement
 
     @Override
     public Object getBean(Class<?> beanClass) throws Exception {
-        return getBean(beanClass.getName());
+        return getBean(beanClass.getSimpleName());
     }
 
     /**

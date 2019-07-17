@@ -145,6 +145,7 @@ public class HdDispatcherServlet extends HttpServlet {
                 if(!ma.matches()) {
                     continue;
                 }
+                return handler;
             } catch (Exception e) {
                 throw e;
             }
@@ -186,6 +187,10 @@ public class HdDispatcherServlet extends HttpServlet {
         applicationContext = new HdApplicationContext(config.getInitParameter(CONTEXT_CONFIG_LOCATION));
         //2: 初始化Spring MVC 九大组件
         initStrategies(applicationContext);
+    }
+
+    protected void onfresh() {
+
     }
 
     //初始化策略

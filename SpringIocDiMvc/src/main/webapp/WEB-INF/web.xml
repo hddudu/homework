@@ -4,5 +4,19 @@
         xmlns="http://java.sun.com/xml/ns/javaee"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-  
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>com.hongdu.spring.mvc.HdDispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:application.properties</param-value>
+        </init-param>
+        <!--		默认就加载-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!--/表示拦截所有的资源 和 请求	-->
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 </web-app>
