@@ -1,0 +1,67 @@
+protected List<String> registryBeanClasses;
+0 = {HdBeanDefinition@800} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.DemoIntroduction, isLazy=false, factoryBeanName=demoIntroduction)"
+1 = {HdBeanDefinition@801} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.mvc.DemoAction, isLazy=false, factoryBeanName=demoAction)"
+2 = {HdBeanDefinition@802} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.mvc.MyAction, isLazy=false, factoryBeanName=myAction)"
+3 = {HdBeanDefinition@803} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.mvc.TwoAction, isLazy=false, factoryBeanName=twoAction)"
+4 = {HdBeanDefinition@804} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.impl.DemoServiceImpl, isLazy=false, factoryBeanName=demoServiceImpl)"
+5 = {HdBeanDefinition@805} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.IDemoService, isLazy=false, factoryBeanName=com.hongdu.spring.demo.service.impl.DemoServiceImpl)"
+6 = {HdBeanDefinition@806} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.impl.ModifyService, isLazy=false, factoryBeanName=modifyService)"
+7 = {HdBeanDefinition@807} "HdBeanDefinition(beanClassName=com.hongdu.gupao.spring.demo.service.IModifyService, isLazy=false, factoryBeanName=com.hongdu.spring.demo.service.impl.ModifyService)"
+8 = {HdBeanDefinition@808} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.impl.QueryService, isLazy=false, factoryBeanName=queryService)"
+9 = {HdBeanDefinition@809} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.IQueryService, isLazy=false, factoryBeanName=com.hongdu.spring.demo.service.impl.QueryService)"
+
+protected final Map<String, HdBeanDefinition> beanDefinitonMap
+
+"queryService" -> {HdBeanDefinition@808} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.impl.QueryService, isLazy=false, factoryBeanName=queryService)"
+"demoAction" -> {HdBeanDefinition@801} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.mvc.DemoAction, isLazy=false, factoryBeanName=demoAction)"
+"demoIntroduction" -> {HdBeanDefinition@800} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.DemoIntroduction, isLazy=false, factoryBeanName=demoIntroduction)"
+"myAction" -> {HdBeanDefinition@802} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.mvc.MyAction, isLazy=false, factoryBeanName=myAction)"
+"twoAction" -> {HdBeanDefinition@803} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.mvc.TwoAction, isLazy=false, factoryBeanName=twoAction)"
+"com.hongdu.spring.demo.service.impl.QueryService" -> {HdBeanDefinition@809} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.IQueryService, isLazy=false, factoryBeanName=com.hongdu.spring.demo.service.impl.QueryService)"
+"demoServiceImpl" -> {HdBeanDefinition@804} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.impl.DemoServiceImpl, isLazy=false, factoryBeanName=demoServiceImpl)"
+"com.hongdu.spring.demo.service.impl.DemoServiceImpl" -> {HdBeanDefinition@805} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.IDemoService, isLazy=false, factoryBeanName=com.hongdu.spring.demo.service.impl.DemoServiceImpl)"
+"com.hongdu.spring.demo.service.impl.ModifyService" -> {HdBeanDefinition@807} "HdBeanDefinition(beanClassName=com.hongdu.gupao.spring.demo.service.IModifyService, isLazy=false, factoryBeanName=com.hongdu.spring.demo.service.impl.ModifyService)"
+"modifyService" -> {HdBeanDefinition@806} "HdBeanDefinition(beanClassName=com.hongdu.spring.demo.service.impl.ModifyService, isLazy=false, factoryBeanName=modifyService)"
+
+private Map<String, Object> singletonObjects 
+"queryService" -> {QueryService@943} 
+"com.hongdu.spring.demo.mvc.MyAction" -> {MyAction@1423} 
+"demoAction" -> {DemoAction@1136} 
+"com.hongdu.spring.demo.mvc.DemoAction" -> {DemoAction@1136} 
+"demoIntroduction" -> {DemoIntroduction@1336} 
+"myAction" -> {MyAction@1423} 
+"twoAction" -> {TwoAction@1611} 
+"com.hongdu.spring.demo.service.impl.QueryService" -> {QueryService@943} 
+"com.hongdu.spring.demo.mvc.TwoAction" -> {TwoAction@1611} 
+"com.hongdu.spring.demo.DemoIntroduction" -> {DemoIntroduction@1336} 
+
+
+
+
+
+
+private Map<String, HdBeanWrapper> factoryBeanInstanceCaches
+"queryService" -> {HdBeanWrapper@958} "HdBeanWrapper(wrapperInstance=com.hongdu.spring.demo.service.impl.QueryService@6500df86, wrapperClass=class com.hongdu.spring.demo.service.impl.QueryService)"
+"demoAction" -> {HdBeanWrapper@1158} "HdBeanWrapper(wrapperInstance=com.hongdu.spring.demo.mvc.DemoAction@78c03f1f, wrapperClass=class com.hongdu.spring.demo.mvc.DemoAction)"
+"demoIntroduction" -> {HdBeanWrapper@1353} "HdBeanWrapper(wrapperInstance=com.hongdu.spring.demo.DemoIntroduction@20398b7c, wrapperClass=class com.hongdu.spring.demo.DemoIntroduction)"
+"myAction" -> {HdBeanWrapper@1432} "HdBeanWrapper(wrapperInstance=com.hongdu.spring.demo.mvc.MyAction@6fc6f14e, wrapperClass=class com.hongdu.spring.demo.mvc.MyAction)"
+"twoAction" -> {HdBeanWrapper@1620} "HdBeanWrapper(wrapperInstance=com.hongdu.spring.demo.mvc.TwoAction@56235b8e, wrapperClass=class com.hongdu.spring.demo.mvc.TwoAction)"
+
+
+
+
+获取注解的样子：
+"@com.hongdu.spring.annotation.HdAutowired(value=)"
+
+
+
+
+
+
+
+
+
+
+
+
+

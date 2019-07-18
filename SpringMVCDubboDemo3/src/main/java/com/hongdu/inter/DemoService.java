@@ -1,7 +1,9 @@
 package com.hongdu.inter;
 
 
-//@Service
+import com.alibaba.dubbo.config.annotation.Service;
+
+@Service
 public interface DemoService {
 
      String sayHello(String name);
