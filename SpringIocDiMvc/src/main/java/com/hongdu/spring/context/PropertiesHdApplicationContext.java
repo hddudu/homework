@@ -3,6 +3,11 @@ package com.hongdu.spring.context;
 import com.hongdu.spring.annotation.HdAutowired;
 import com.hongdu.spring.annotation.HdController;
 import com.hongdu.spring.annotation.HdService;
+import com.hongdu.spring.aop.HdAopProxy;
+import com.hongdu.spring.aop.HdCglibAopProxy;
+import com.hongdu.spring.aop.HdJdkDynamicAopProxy;
+import com.hongdu.spring.aop.config.HdAopConfig;
+import com.hongdu.spring.aop.support.HdAdvisedSupport;
 import com.hongdu.spring.beans.HdBeanWrapper;
 import com.hongdu.spring.beans.config.v1.HdBeanDefinition;
 import com.hongdu.spring.beans.config.v1.HdBeanPostProcessor;
@@ -117,7 +122,12 @@ public class PropertiesHdApplicationContext extends HdDefaultListableBeanFactory
         //初始化
         instance = instantiateBean(beanName, definition);
         //3、把这个对象封装到BeanWrapper中
+        //aop 来添加逻辑：
         HdBeanWrapper beanWrapper = new HdBeanWrapper(instance);
+
+        //创建一个 代理的策略， 看使用cglib还是 jdk
+
+
         //后置处理
         //2、拿到BeanWraoper之后，把BeanWrapper保存到IOC容器中去
         this.factoryBeanInstanceCaches.put(beanName, beanWrapper);
@@ -132,6 +142,13 @@ public class PropertiesHdApplicationContext extends HdDefaultListableBeanFactory
         return this.factoryBeanInstanceCaches.get(beanName).getWrapperInstance();
     }
 
+    /**
+     * 将原始类 做了包装是没有问题，
+     *  但是注入的时候， 仍然注入的是原来的类的配置了自动注入的属性
+     * @param beanName
+     * @param definition
+     * @param beanWrapper
+     */
     private void populateBean(String beanName, HdBeanDefinition definition, HdBeanWrapper beanWrapper) {
         Object instance = beanWrapper.getWrapperInstance();
 
@@ -190,9 +207,18 @@ public class PropertiesHdApplicationContext extends HdDefaultListableBeanFactory
                 //原始版本
                 Class<?> clazz = Class.forName(className);
                 instance = clazz.newInstance();
+                HdAdvisedSupport config = instantionAopConfig(definition);
+                config.setTargetClass(clazz);
+                config.setTarget(instance);
+                //如果符合我们的代理的规则， 那么就进行创建代理对象
+                if(config.pointCutMatch()) {
+                    instance = createProxy(config).getProxy();
+                }
                 //将类名 以及 加注解的时候的key都添加了
                 this.singletonObjects.put(className, instance);
                 this.singletonObjects.put(definition.getFactoryBeanName(), instance);
+
+
 
                 //第二版本
 //                Class<?> clazz = Class.forName(className);
@@ -216,6 +242,40 @@ public class PropertiesHdApplicationContext extends HdDefaultListableBeanFactory
             e.printStackTrace();
         }
         return instance;
+    }
+
+    /**
+     * 根据 jdk和cglib代理的方式 不 一样 进行不同的代理方式
+     *  就是判断接口数是否大于0
+     * @param config
+     * @return
+     */
+    private HdAopProxy createProxy(HdAdvisedSupport config) {
+        Class<?> targetClass = config.getTargetClass();
+        if(targetClass.getInterfaces().length > 0) {
+            return new HdJdkDynamicAopProxy(config);
+        }
+        return new HdCglibAopProxy(config);
+    }
+
+    /**
+     * 初始化代理的对象 ：
+     * @param definition
+     * @return
+     */
+    private HdAdvisedSupport instantionAopConfig(HdBeanDefinition definition) {
+
+        HdAopConfig config = new HdAopConfig();
+        Properties pro = this.reader.getConfig();
+        config.setPointCut(this.reader.getConfig().getProperty("pointCut"));
+        config.setAspectBefore(pro.getProperty("aspectBefore"));
+        config.setAspectAfter(pro.getProperty("aspectAfter"));
+        config.setAspectClass(pro.getProperty("aspectClass"));
+        config.setAspectAfterThrow(pro.getProperty("aspectAfterThrow"));
+        config.setAspectAfterThrowingName(pro.getProperty("aspectAfterThrowingName"));
+        HdAdvisedSupport advised = new HdAdvisedSupport();
+        advised.setAopConfig(config);
+        return new HdAdvisedSupport(config);
     }
 
     @Override
