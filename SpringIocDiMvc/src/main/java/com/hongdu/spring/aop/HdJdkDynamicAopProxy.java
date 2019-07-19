@@ -32,7 +32,12 @@ public class HdJdkDynamicAopProxy implements HdAopProxy, InvocationHandler {
 
     @Override
     public Object getProxy() throws Exception {
-        return getProxy(this.advised.getTargetClass().getClassLoader());
+//        return getProxy(this.advised.getTargetClass().getClassLoader());
+        //com.hongdu.spring.demo.service.impl.ModifyService@67784306
+        System.out.println("this.advised.getTarget() ： " + this.advised.getTarget());
+        // sun.misc.Launcher$AppClassLoader@18b4aac2
+        System.out.println("this.advised.getTarget().getClass().getClassLoader() ： " + this.advised.getTarget().getClass().getClassLoader());
+        return getProxy(this.advised.getTarget().getClass().getClassLoader());
     }
 
     /**
@@ -45,8 +50,36 @@ public class HdJdkDynamicAopProxy implements HdAopProxy, InvocationHandler {
     public Object getProxy(ClassLoader classLoader) throws Exception {
         //根据接口 类加载器 jdk的反射调用器 ： 实现获取代理对象
         return Proxy.newProxyInstance(classLoader,
-                                    this.advised.getTargetClass().getInterfaces(),
+                                    this.advised.getTarget().getClass().getInterfaces(),
                                     this);
+    }
+
+    /**
+     * 测试是代理
+     * @param args
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
+
+        HdAdvisedSupport advisedSupport = new HdAdvisedSupport();
+        //设置要代理的目标类
+        Class<?> clazz = Class.forName("com.hongdu.spring.demo.service.impl.QueryService");
+        Object instance = clazz.newInstance();
+        advisedSupport.setTarget(instance);
+//        Object oo = Proxy.newProxyInstance(instance.getClass().getClassLoader(), instance.getClass().getInterfaces(), new InvocationHandler() {
+//            @Override
+//            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+//                System.out.println("车工代理");
+//                return null;
+//            }
+//        });
+//        System.out.println("oo : "+oo);
+//        advisedSupport.setTargetClass(clazz);
+        HdJdkDynamicAopProxy proxy = new HdJdkDynamicAopProxy(advisedSupport);
+        //测试jdk代理
+        Object o = proxy.getProxy();
+//        Object o = proxy.getProxy(clazz.getClassLoader());
+        System.out.println(o);
     }
 
     @Override

@@ -212,7 +212,9 @@ public class PropertiesHdApplicationContext extends HdDefaultListableBeanFactory
                 config.setTarget(instance);
                 //如果符合我们的代理的规则， 那么就进行创建代理对象
                 if(config.pointCutMatch()) {
-                    instance = createProxy(config).getProxy();
+                    HdAopProxy px = createProxy(config);
+                    instance = px.getProxy();
+//                    instance = createProxy(config).getProxy();
                 }
                 //将类名 以及 加注解的时候的key都添加了
                 this.singletonObjects.put(className, instance);

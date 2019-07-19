@@ -64,7 +64,7 @@ public class HdAdvisedSupport {
     }
 
     public Object getTarget() {
-        return null;
+        return this.target;
     }
 
     /**
@@ -95,6 +95,7 @@ public class HdAdvisedSupport {
     public void setTargetClass(Class<?> targetClass) {
         this.targetClass = targetClass;
         //在初始化成代理对象的时候就准备解析
+        //暂时本地先注释
         parse();
     }
     //pointCut=public .* com.hongdu.spring.demo.service..*Service..*(.*) 这个最后的括号内的表示方法

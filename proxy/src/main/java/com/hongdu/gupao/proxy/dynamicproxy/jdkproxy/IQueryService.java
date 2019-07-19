@@ -1,4 +1,4 @@
-package com.hongdu.spring.demo.service;
+package com.hongdu.gupao.proxy.dynamicproxy.jdkproxy;
 
 /**
  * 查询业务
