@@ -1,6 +1,6 @@
 package com.hongdu.spring.aop.interceptor;
 
-import com.hongdu.spring.aop.invocations.HdMethodInvocation;
+import com.hongdu.spring.aop.invocations.HdReflectiveMethodInvocation;
 
 /**
  * @ClassName HdMethodInterceptor
@@ -18,5 +18,5 @@ public interface HdMethodInterceptor {
      * @return
      * @throws Throwable
      */
-    Object invoke(HdMethodInvocation invocation) throws Throwable;
+    Object invoke(HdReflectiveMethodInvocation invocation) throws Throwable;
 }

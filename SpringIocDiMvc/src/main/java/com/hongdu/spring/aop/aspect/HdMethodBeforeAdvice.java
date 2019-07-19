@@ -1,7 +1,7 @@
 package com.hongdu.spring.aop.aspect;
 
 import com.hongdu.spring.aop.interceptor.HdMethodInterceptor;
-import com.hongdu.spring.aop.invocations.HdMethodInvocation;
+import com.hongdu.spring.aop.invocations.HdReflectiveMethodInvocation;
 
 import java.lang.reflect.Method;
 
@@ -31,11 +31,12 @@ public class HdMethodBeforeAdvice extends HdAbstractMethodAdvice implements HdAd
      * @param target
      * @throws Exception
      */
-    private void before(Method method, Object[] args, Object target) throws Exception {
-        method.invoke(target, args);
+    private void before(Method method, Object[] args, Object target) throws Throwable {
+//        method.invoke(target, args);
+        super.invokeAdviceMethod(this.joinPoint,null,null);
     }
     @Override
-    public Object invoke(HdMethodInvocation mi) throws Throwable {
+    public Object invoke(HdReflectiveMethodInvocation mi) throws Throwable {
         this.joinPoint = mi;
         before(mi.getMethod(), mi.getArgs(), mi.getThis());
         return mi.proceed();

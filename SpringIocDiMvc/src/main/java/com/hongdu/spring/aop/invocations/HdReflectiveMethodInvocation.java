@@ -1,5 +1,6 @@
 package com.hongdu.spring.aop.invocations;
 
+import com.hongdu.spring.aop.aspect.HdJoinPoint;
 import com.hongdu.spring.aop.interceptor.HdMethodInterceptor;
 
 import java.lang.reflect.Method;
@@ -15,7 +16,7 @@ import java.util.Map;
  * @Date 2019/7/18 16:22
  * @Version 1.0
  */
-public class HdReflectiveMethodInvocation implements HdMethodInvocation {
+public class HdReflectiveMethodInvocation implements HdJoinPoint {
 
     //代理对象 newProxy
     private Object proxy;
@@ -71,7 +72,6 @@ public class HdReflectiveMethodInvocation implements HdMethodInvocation {
      * @return
      * @throws Throwable
      */
-    @Override
     public Object proceed() throws Throwable {
         //	We start with an index of -1 and increment early.
         //如果Interceptor执行完了，则执行 0

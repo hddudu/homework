@@ -6,10 +6,7 @@ import com.hongdu.spring.aop.aspect.HdMethodBeforeAdvice;
 import com.hongdu.spring.aop.config.HdAopConfig;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,7 +46,7 @@ public class HdAdvisedSupport {
      * 每一个方法对应一个i拦截器链 ：
      * 然后 list那边就不用add 当前方法了
      */
-    private transient Map<Method, List<Object>> methodCache;
+    private transient Map<Method, List<Object>> methodCache = new HashMap<>();;
 
     public HdAdvisedSupport() {
     }
@@ -86,6 +83,8 @@ public class HdAdvisedSupport {
         //第一次的时候， 需要存储
         if(cached == null || cached.size() == 0) {
             Method m = targetClass.getMethod(method.getName(), method.getParameterTypes());
+            //原来是这个地方： 先获取到 值缓存起来，  直接缓存会为空
+            cached = methodCache.get(m);
             this.methodCache.put(m, cached);
         }
 
@@ -113,7 +112,8 @@ public class HdAdvisedSupport {
         this.pointCutClassPatter = Pattern.compile("class " + pointCutForClassRegex.substring(
                         pointCutForClassRegex.lastIndexOf(" ") + 1));
 
-        methodCache = new HashMap<>();
+        //这里有个问题 ： 我知道了 ：
+//        methodCache = new HashMap<>();
         Pattern pattern = Pattern.compile(pointCut);
 
         try {
@@ -170,6 +170,7 @@ public class HdAdvisedSupport {
                     }
                     //在匹配玩后进行一个容器装载
                     methodCache.put(m, advices);
+                    System.out.println("methodCache : " + m + "; 拦截器链路 : " + Arrays.toString(advices.toArray()));
                 }
             }
         } catch (Exception e) {

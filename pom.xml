@@ -25,6 +25,8 @@
     <module>SpringMVCDubboDemo2</module>
     <module>SpringMVCDubboDemo3</module>
       <module>SpringIocDiMvc</module>
+      <module>SpringOrmDemo</module>
+      <module>SpringORMDemo</module>
   </modules>
 
   <name>homework</name>
