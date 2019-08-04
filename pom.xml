@@ -27,6 +27,7 @@
       <module>SpringIocDiMvc</module>
       <module>SpringOrmDemo</module>
       <module>SpringORMDemo</module>
+      <module>Spring5Demo</module>
   </modules>
 
   <name>homework</name>
