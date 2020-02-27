@@ -59,13 +59,15 @@ public class ContainerSingleton {
             try {
                 instance = Class.forName(className).newInstance();
                 //方式三： 感觉稍微好点 ： 还是不是很爽
-                synchronized (singleton) {
-                    if(ioc.containsKey(className)) {
-                        return ioc.get(className);
-                    } else {
-                        ioc.put(className, instance);
-                    }
-                }
+//                synchronized (singleton) {
+//                    if(ioc.containsKey(className)) {
+//                        return ioc.get(className);
+//                    } else {
+//                        ioc.put(className, instance);
+//                    }
+//                }
+
+                ioc.put(className, instance);
 
             }catch (Exception e){
                 e.printStackTrace();
