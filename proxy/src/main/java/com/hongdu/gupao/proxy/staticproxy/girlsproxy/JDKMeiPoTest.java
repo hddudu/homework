@@ -1,9 +1,11 @@
 package com.hongdu.gupao.proxy.staticproxy.girlsproxy;
 
 import com.hongdu.gupao.proxy.Person;
-import sun.misc.ProxyGenerator;
 
-import java.io.FileOutputStream;
+/**
+ * 参考链接：
+ * https://www.processon.com/diagraming/5e527166e4b0c037b5fad533
+ */
 
 public class JDKMeiPoTest {
     public static void main(String[] args) throws Exception{
