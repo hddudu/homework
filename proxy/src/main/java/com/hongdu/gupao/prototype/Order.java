@@ -1,5 +1,9 @@
 package com.hongdu.gupao.prototype;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import org.codehaus.jackson.map.ObjectMapper;
+
 import java.io.*;
 import java.util.List;
 
@@ -35,6 +39,12 @@ public class Order implements Serializable {
         this.orderItems = orderItems;
     }
 
+    public Order deepCloenByObjectMapper() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String orderString = objectMapper.writeValueAsString(this);
+        return objectMapper.readValue(orderString, this.getClass());
+    }
+
     public Order deepClone() {
         Order order = null;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -50,5 +60,10 @@ public class Order implements Serializable {
             e.printStackTrace();
         }
         return order;
+    }
+
+    public Order jsonClone() {
+        Order prototypTest = this;
+        return  JSON.toJavaObject((JSON) JSONObject.toJSON(prototypTest), Order.class);
     }
 }

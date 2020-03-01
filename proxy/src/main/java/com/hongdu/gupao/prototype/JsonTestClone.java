@@ -3,6 +3,8 @@ package com.hongdu.gupao.prototype;
 /**
  * @ClassName JsonTestClone
  * @Description 参考 ： https://my.oschina.net/fengshuzi/blog/418976
+ * https://gper.club/homework/tasks/7e7e7f7ff7g5fgc5g6egf0
+ * https://gper.club/homework/tasks/7e7e7f7ff7g5fgc5g6egf0
  * @Author dudu
  * @Date 2020/3/1 15:30
  * @Version 1.0
@@ -20,13 +22,16 @@ public class JsonTestClone {
 //        com.hongdu.gupao.prototype.Order@48eff760
 //        方式三： 实现json方式:
 //        其实java本身的序列化效率其实很低
-        System.out.println(order);
-        String orderJson = JsonUtils.toJson(order);
-//        System.out.println(orderJson);
-
-        Order order1 = JsonUtils.getObjectMapper().readValue(orderJson, Order.class);
-        System.out.println(order1);
+//        System.out.println(order);
+//        String orderJson = JsonUtils.toJson(order);
+////        System.out.println(orderJson);
+//
+//        Order order1 = JsonUtils.getObjectMapper().readValue(orderJson, Order.class);
+//        System.out.println(order1);
 //        com.hongdu.gupao.prototype.Order@387c703b
 //        com.hongdu.gupao.prototype.Order@5d740a0f
+        System.out.println(order);
+        System.out.println(order.deepCloenByObjectMapper());
+        System.out.println(order.jsonClone());
     }
 }
