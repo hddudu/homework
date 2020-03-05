@@ -15,9 +15,9 @@ public class TeacherMenuDecorator extends AbstractMenuDecorator {
 
     @Override
     public void addMenus() {
-        this.menuItems.add(new MenuItem("作业", 3));
-        this.menuItems.add(new MenuItem("题库", 4));
-        this.menuItems.add(new MenuItem("成长墙", 5));
-        this.menuItems.add(new MenuItem("学生管理", 9));
+        abstractMenu.menuItems.add(new MenuItem("作业", 3));
+        abstractMenu.menuItems.add(new MenuItem("题库", 4));
+        abstractMenu.menuItems.add(new MenuItem("成长墙", 5));
+        abstractMenu.menuItems.add(new MenuItem("学生管理", 9));
     }
 }

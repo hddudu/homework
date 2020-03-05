@@ -15,8 +15,8 @@ public class VipMenuDecorator extends AbstractMenuDecorator {
 
     @Override
     public void addMenus() {
-        super.menuItems.add(new MenuItem("作业", 3));
-        super.menuItems.add(new MenuItem("题库", 4));
-        super.menuItems.add(new MenuItem("成长墙", 5));
+        abstractMenu.menuItems.add(new MenuItem("作业", 3));
+        abstractMenu.menuItems.add(new MenuItem("题库", 4));
+        abstractMenu.menuItems.add(new MenuItem("成长墙", 5));
     }
 }

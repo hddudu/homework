@@ -10,7 +10,7 @@ package com.hongdu.gupao.derector.navigator.v2;
 public class AbstractMenuDecorator extends AbstractMenu {
 
     //持有自己父类的引用 ： 能够找到自己要装饰的原对象 ： 这个是属于 ： java 的上溯造型的原理
-    private AbstractMenu abstractMenu;
+    protected AbstractMenu abstractMenu;
 
     //注入对象： 注入原对象
     public AbstractMenuDecorator(AbstractMenu abstractMenu) {
@@ -19,12 +19,10 @@ public class AbstractMenuDecorator extends AbstractMenu {
 
     @Override
     public void printMenus() {
-        addMenus();
         abstractMenu.printMenus();
     }
 
     @Override
     public void addMenus() {
-        abstractMenu.addMenus();
     }
 }
