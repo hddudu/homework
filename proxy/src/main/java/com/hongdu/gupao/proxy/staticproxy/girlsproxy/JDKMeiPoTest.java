@@ -1,6 +1,9 @@
 package com.hongdu.gupao.proxy.staticproxy.girlsproxy;
 
 import com.hongdu.gupao.proxy.Person;
+import sun.misc.ProxyGenerator;
+
+import java.io.FileOutputStream;
 
 /**
  * 参考链接：
@@ -26,11 +29,11 @@ public class JDKMeiPoTest {
 
 //			byte[]  bytes =
 
-//        byte [] bytes = ProxyGenerator.generateProxyClass("$Proxy1",new Class[]{Person.class});
+        byte [] bytes = ProxyGenerator.generateProxyClass("$Proxy11",new Class[]{Person.class});
         //生成到当前目录下 : 文件输出流 直接将字节流写成文件到目录下 ; 写 然后 刷新 关闭流
-//        FileOutputStream os = new FileOutputStream("G:\\my_maven_workspace_git\\javaSpaceForGupao\\homework\\proxy\\src\\main\\java\\com\\hongdu\\gupao\\proxy\\staticproxy\\girlsproxy\\$Proxy0.class");
-////        os.write(bytes);
-////        os.close();
+        FileOutputStream os = new FileOutputStream("G:\\my_maven_workspace_git\\javaSpaceForGupao\\homework\\proxy\\src\\main\\java\\com\\hongdu\\gupao\\proxy\\staticproxy\\girlsproxy\\$Proxy11.class");
+        os.write(bytes);
+        os.close();
     }
 }
 
